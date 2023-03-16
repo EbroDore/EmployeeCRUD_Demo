@@ -1,3 +1,6 @@
+using EmployeeCRUD.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace EmployeeCRUD
 {
     public class Program
@@ -8,6 +11,8 @@ namespace EmployeeCRUD
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<MVCDemoEbContext>(options => 
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MVCDemoConnectionString")));
 
             var app = builder.Build();
 
