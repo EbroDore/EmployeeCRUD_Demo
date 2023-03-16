@@ -4,6 +4,7 @@ using EmployeeCRUD.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeCRUD.Migrations
 {
     [DbContext(typeof(MVCDemoEbContext))]
-    partial class MVCDemoEbContextModelSnapshot : ModelSnapshot
+    [Migration("20230316122611_Created Cotroller, EmployeeVm etc...")]
+    partial class CreatedCotrollerEmployeeVmetc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
