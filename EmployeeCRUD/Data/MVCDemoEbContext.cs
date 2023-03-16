@@ -1,4 +1,4 @@
-﻿using EmployeeCRUD.Models;
+﻿using EmployeeCRUD.Models.Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeCRUD.Data

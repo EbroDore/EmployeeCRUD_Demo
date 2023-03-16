@@ -1,4 +1,4 @@
-﻿namespace EmployeeCRUD.Models
+﻿namespace EmployeeCRUD.Models.Domain
 {
     public class Employee
     {
@@ -7,6 +7,6 @@
         public string Email { get; set; }
         public long Salary { get; set; }
         public string Department { get; set; }
-        public DateTime DateOfBirth { get; set;}
+        public DateTime DateOfBirth { get; set; }
     }
 }
