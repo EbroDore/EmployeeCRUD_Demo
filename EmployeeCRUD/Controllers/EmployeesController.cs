@@ -48,6 +48,61 @@ namespace EmployeeCRUD.Controllers
 			return RedirectToAction("Index");
 		}
 
+		[HttpGet]
+		public async  Task<IActionResult> View(Guid id)
+		{
+			var employee = await mVCDemoEbContext.Employees.FirstOrDefaultAsync(x => x.Id == id);
+
+			if(employee != null)
+			{
+				var viewModel = new UpdateEmployeeVM()
+				{
+					Id = employee.Id,
+					Name = employee.Name,
+					Email = employee.Email,
+					Salary = employee.Salary,
+					DateOfBirth = employee.DateOfBirth,
+					Department = employee.Department
+				};
+				return await Task.Run(() =>View("View", viewModel));
+			}
+
+			
+			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> View(UpdateEmployeeVM model)
+		{
+			var employee = await mVCDemoEbContext.Employees.FindAsync(model.Id);
+
+			if(employee != null)
+			{
+				employee.Name = model.Name;
+				employee.Email = model.Email;
+				employee.Salary = model.Salary;
+				employee.DateOfBirth = model.DateOfBirth;
+				employee.Department = model.Department;
+			}
+			await mVCDemoEbContext.SaveChangesAsync();
+
+			return RedirectToAction("Index");
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Delete(UpdateEmployeeVM model)
+		{
+			var employee = await mVCDemoEbContext.Employees.FindAsync(model.Id);
+
+			if(employee != null)
+			{
+				mVCDemoEbContext.Employees.Remove(employee);
+
+				await mVCDemoEbContext.SaveChangesAsync();
+				return RedirectToAction("Index");
+			}
+			return RedirectToAction("Index");
+		}
 
 	}
 }
